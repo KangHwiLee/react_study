@@ -9,8 +9,19 @@ import State from './pages/State';
 import Param1 from './pages/Param1';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Param2 from './pages/Param2';
+import { useEffect, useState } from 'react';
+
+
 
 function App() {
+  const [message, setMessage] = useState("")
+  useEffect(()=>{
+    fetch("/test")
+      .then(res => res.text())
+      .then(m=>setMessage(m))
+      .then(console.log({message}))
+  })
+
   return (
     <div className="App">
         <BrowserRouter>
